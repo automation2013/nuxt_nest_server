@@ -10,5 +10,8 @@
     "node": ">=18.17.1 <19"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^7.2.0"
+  }
 }
