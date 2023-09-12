@@ -10,6 +10,7 @@
   "engines": {
     "node": ">=18.17.1 <19"
   },
+  "workspaces": ["client", "server"],
   "author": "",
   "license": "MIT",
   "devDependencies": {
