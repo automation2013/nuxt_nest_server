@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "list": "lerna list --json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "check-code-format": "prettier . --check"
   },
   "engines": {
     "node": ">=18.17.1 <19"
