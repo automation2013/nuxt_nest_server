@@ -6,6 +6,10 @@ const config = require('config');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const bodyParser = require('body-parser');
 import helmet from 'helmet';
+// import * as compression from 'compression';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const compression = require('compression');
+
 const port = config.get('server.port');
 const apiPrefix = config.get('server.apiPrefix');
 
@@ -16,6 +20,7 @@ async function bootstrap() {
     // 设置全局中间件
     app.use(helmet());
     app.use(bodyParser.json({ extended: true, limit: '20mb' }));
+    app.use(compression());
   })();
   await app.listen(port);
 }
