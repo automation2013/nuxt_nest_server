@@ -5,9 +5,11 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 const config = require('config');
 
 const port = config.get('server.port');
+const apiPrefix = config.get('server.apiPrefix');
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.setGlobalPrefix(apiPrefix); // 设置服务器路由前缀(https://docs.nestjs.com/faq/global-prefix)
   await app.listen(port);
 }
 bootstrap();
