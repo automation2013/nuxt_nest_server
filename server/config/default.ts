@@ -19,7 +19,7 @@ export default {
       username: 'root',
       password: 'df123456',
       database: 'sso',
-      synchronize: true,
+      synchronize: false,
       entities: ['src/modules/**/**.entity.{ts,js}'],
       autoLoadEntities: true,
     },
