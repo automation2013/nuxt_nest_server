@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "list": "lerna list --json",
     "prepare": "husky install",
-    "check-code-format": "prettier . --check"
+    "check-code-format": "prettier . --check",
+    "server:start:dev": "npm run start:dev --workspace=app-server",
+    "server:start:debug": "npm run start:debug --workspace=app-server",
+    "server:build": "npm run build --workspace=app-server",
+    "server:start:prod": "NODE_ENV=production npm run start:prod --workspace=app-server"
   },
   "engines": {
     "node": ">=18.17.1 <19"
@@ -23,7 +27,6 @@
     "@commitlint/config-conventional": "^17.7.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
-    "cross-env": "^7.0.3",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-vue": "^9.17.0",

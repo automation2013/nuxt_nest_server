@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "start:dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "cross-env NITRO_PORT=3000 NITRO_HOST='0.0.0.0' node .output/server/index.mjs"
+    "start:prod": "cross-env NITRO_PORT=3000 NITRO_HOST='0.0.0.0' node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "cross-env": "^7.0.3",
     "nuxt": "^3.7.1"
   }
 }
