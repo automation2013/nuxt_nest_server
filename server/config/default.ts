@@ -23,5 +23,12 @@ export default {
       entities: ['src/modules/**/**.entity.{ts,js}'],
       autoLoadEntities: true,
     },
+    redis: {
+      host: '10.1.113.4',
+      port: 46379,
+      password: 'o0OE%3wGAFSR',
+      prefix: 'dev-sso',
+      dbNumber: 0,
+    },
   },
 };

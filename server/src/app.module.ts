@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
 // 公共模块
-import { TypeormModule } from './modules/common/typeorm/typeorm_module';
+import { TypeormModule } from './common/database/typeorm_module';
 // 业务模块
 import { DemoModule } from './modules/demo/demo.module';
+
 @Module({
-  imports: [TypeormModule, DemoModule],
+  imports: [
+    // 公共模块
+    TypeormModule,
+    //业务模块
+    DemoModule,
+  ],
   controllers: [],
   providers: [],
 })
