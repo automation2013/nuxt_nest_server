@@ -21,6 +21,7 @@ export default {
       database: 'sso',
       synchronize: false,
       entities: ['src/modules/**/**.entity.ts'],
+      autoLoadEntities: true,
     },
   },
 };

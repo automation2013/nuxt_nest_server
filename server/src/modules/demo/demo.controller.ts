@@ -6,8 +6,8 @@ export class DemoController {
   constructor(private readonly demoService: DemoService) {}
 
   @Get('test/get')
-  methodGet() {
-    return this.demoService.methodGet();
+  async methodGet() {
+    return await this.demoService.methodGet();
   }
 
   @Post('test/post')
