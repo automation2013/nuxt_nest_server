@@ -1,1 +1,7 @@
-export default {};
+export default {
+  database: {
+    typeorm: {
+      synchronize: true,
+    },
+  },
+};
