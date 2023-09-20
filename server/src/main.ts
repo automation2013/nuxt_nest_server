@@ -53,12 +53,10 @@ async function bootstrap() {
   swaggerOpen && addSwagger(app);
   await app.listen(port, host, () => {
     console.log(`     Application is listening on http://${host}:${port}`);
-    swaggerOpen &&
-      console.log(
-        `     open http://${host}:${port}/${config.get(
-          'swagger.path',
-        )} swagger for Api`,
-      );
+    if (swaggerOpen) {
+      const path = config.get('swagger.path');
+      console.log(`     open http://${host}:${port}/${path} swagger for Api`);
+    }
   });
 }
 bootstrap();
