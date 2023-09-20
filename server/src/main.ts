@@ -10,9 +10,10 @@ const bodyParser = require('body-parser');
 import { AppModule } from './app.module';
 import { createRedisClient } from './common/database/redis';
 
+const host = config.get('server.host');
 const port = config.get('server.port');
 const apiPrefix = config.get('server.apiPrefix');
-
+const swaggerOpen = config.get('swagger.open');
 /**
  * app添加全局中间件
  * @param {NestExpressApplication} app express应用实例
@@ -28,14 +29,19 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
  * @param {NestExpressApplication} app express应用实例
  */
 function addSwagger(app: NestExpressApplication) {
+  const title = config.get('swagger.title');
+  const description = config.get('swagger.description');
+  const version = config.get('swagger.version');
+  const tag = config.get('swagger.tag');
+  const path = config.get('swagger.path');
   const options = new DocumentBuilder()
-    .setTitle('工程 swagger 文档')
-    .setDescription('swagger 接口详情')
-    .setVersion('1.0')
-    .addTag('功能模块列表')
+    .setTitle(title)
+    .setDescription(description)
+    .setVersion(version)
+    .addTag(tag)
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup(path, app, document);
 }
 
 async function bootstrap() {
@@ -44,9 +50,15 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix(apiPrefix); // 设置服务器路由前缀(https://docs.nestjs.com/faq/global-prefix)
   addAppGlobalMiddleaware(app);
-  addSwagger(app);
-  await app.listen(port);
-  console.log(`     Application is listening on http://0.0.0.0:${port}`);
-  console.log(`     open http://0.0.0.0:${port} swagger for Api`);
+  swaggerOpen && addSwagger(app);
+  await app.listen(port, host, () => {
+    console.log(`     Application is listening on http://${host}:${port}`);
+    swaggerOpen &&
+      console.log(
+        `     open http://${host}:${port}/${config.get(
+          'swagger.path',
+        )} swagger for Api`,
+      );
+  });
 }
 bootstrap();

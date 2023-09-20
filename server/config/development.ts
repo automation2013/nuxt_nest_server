@@ -4,4 +4,7 @@ export default {
       synchronize: true,
     },
   },
+  swagger: {
+    open: true,
+  },
 };
