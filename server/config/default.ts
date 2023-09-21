@@ -6,10 +6,16 @@ export default {
     apiPrefix: 'api', // 服务器路由前缀
   },
   cookie: {
-    // cookie配置
+    // cookie配置 (https://www.expressjs.com.cn/4x/api.html#res.cookie)
     common: {
-      SameSite: 'Strict',
-      Domain: '',
+      // cookie 公共配置
+      domain: '', // Domain name for the cookie. Defaults to the domain name of the app.
+      path: '/', //Path for the cookie. Defaults to “/”.
+      sameSite: 'strict',
+      secure: false, // Marks the cookie to be used with HTTPS only.
+      httpOnly: true, // Flags the cookie to be accessible only by the web server.
+      maxAge: 3 * 60 * 1000, // Convenient option for setting the expiry time relative to the current time in milliseconds.
+      signed: false,
     },
   },
   database: {
