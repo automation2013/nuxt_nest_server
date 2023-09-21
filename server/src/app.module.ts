@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { APP_PIPE } from '@nestjs/core';
 // 全局管道
-import { ClassValidationPipe } from './common/pipes/class_validation.pipe';
+import { ClassValidationPipe } from './pipes/class_validation.pipe';
 // 公共模块
 import { TypeormModule } from './common/database/typeorm_module';
 // 业务模块
