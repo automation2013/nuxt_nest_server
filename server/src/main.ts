@@ -6,6 +6,7 @@ const compression = require('compression');
 import helmet from 'helmet';
 const config = require('config');
 const bodyParser = require('body-parser');
+import * as cookieParser from 'cookie-parser';
 
 import { AppModule } from './app.module';
 import { createRedisClient } from './common/database/redis';
@@ -22,6 +23,7 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
   app.use(helmet());
   app.use(bodyParser.json({ extended: true, limit: '20mb' }));
   app.use(compression());
+  app.use(cookieParser());
 }
 
 /**
