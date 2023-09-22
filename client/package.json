@@ -7,7 +7,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start:prod": "cross-env NITRO_PORT=3000 NITRO_HOST='0.0.0.0' node .output/server/index.mjs"
+    "start:prod": "cross-env NITRO_PORT=8080 NITRO_HOST='0.0.0.0' node .output/server/index.mjs"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
