@@ -9,4 +9,8 @@ export default defineNuxtConfig({
       cert: '../secrets/public-certificate.pem',
     },
   },
+  sourcemap: {
+    server: true,
+    client: true,
+  },
 });
