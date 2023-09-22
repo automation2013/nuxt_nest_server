@@ -7,14 +7,27 @@ import helmet from 'helmet';
 const config = require('config');
 const bodyParser = require('body-parser');
 import * as cookieParser from 'cookie-parser';
+import * as fs from 'node:fs';
+const path = require('node:path');
 
 import { AppModule } from './app.module';
 import { createRedisClient } from './common/database/redis';
-
 const host = config.get('server.host');
 const port = config.get('server.port');
+const httpsOpen = config.get('server.httpsOpen');
 const apiPrefix = config.get('server.apiPrefix');
 const swaggerOpen = config.get('swagger.open');
+const httpsOptions = httpsOpen
+  ? {
+      key: fs.readFileSync(
+        path.join(__dirname, '../../../', './secrets/private-key.pem'),
+      ),
+      cert: fs.readFileSync(
+        path.join(__dirname, '../../../', './secrets/public-certificate.pem'),
+      ),
+    }
+  : undefined;
+
 /**
  * app添加全局中间件
  * @param {NestExpressApplication} app express应用实例
@@ -49,15 +62,26 @@ function addSwagger(app: NestExpressApplication) {
 async function bootstrap() {
   // 创建redis实例
   await createRedisClient();
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    httpsOptions,
+  });
   app.setGlobalPrefix(apiPrefix); // 设置服务器路由前缀(https://docs.nestjs.com/faq/global-prefix)
   addAppGlobalMiddleaware(app);
   swaggerOpen && addSwagger(app);
   await app.listen(port, host, () => {
-    console.log(`     Application is listening on http://${host}:${port}`);
+    const protocol = httpsOpen ? 'https' : 'http';
+    console.log(
+      '\x1B[32m',
+      ` ➜ Local:   ${protocol}://${host}:${port}`,
+      '\x1B[0m',
+    );
     if (swaggerOpen) {
       const path = config.get('swagger.path');
-      console.log(`     open http://${host}:${port}/${path} swagger for Api`);
+      console.log(
+        '\x1B[35m',
+        ` ➜ Swagger: ${protocol}://${host}:${port}/${path}`,
+        '\x1B[0m',
+      );
     }
   });
 }
