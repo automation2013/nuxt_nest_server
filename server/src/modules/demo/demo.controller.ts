@@ -5,6 +5,8 @@ import { MethodGetDto } from './dtos/method_get.dto';
 import { MethodPostDto } from './dtos/method_post.dto';
 import { Request, Response } from 'express';
 import { getCookieConfig } from '../../common/utils/cookie';
+import { IResponse } from '../../common/interfaces/respons.interface';
+import { ERRROR } from '../../common/http/error';
 
 @ApiTags('demo示例接口')
 @Controller('demo')
@@ -16,9 +18,13 @@ export class DemoController {
     description: '接口功能详情',
   })
   @Get('test/get')
-  async methodGet(@Query() methodGetDto: MethodGetDto) {
+  async methodGet(@Query() methodGetDto: MethodGetDto): Promise<IResponse> {
     console.log(methodGetDto);
-    return await this.demoService.methodGet();
+    const res = await this.demoService.methodGet();
+    return {
+      status: 0,
+      data: { res },
+    };
   }
 
   @ApiOperation({
@@ -31,9 +37,13 @@ export class DemoController {
   })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @Post('test/post')
-  methodPost(@Body() methodPostDto: MethodPostDto) {
+  methodPost(@Body() methodPostDto: MethodPostDto): IResponse {
     console.log(methodPostDto);
-    return methodPostDto;
+    return {
+      status: -1,
+      errcode: ERRROR.DEMO.errcode,
+      errmsg: ERRROR.DEMO.errmsg,
+    };
   }
 
   @ApiOperation({
