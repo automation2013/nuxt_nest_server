@@ -13,7 +13,7 @@ export default {
       domain: '', // Domain name for the cookie. Defaults to the domain name of the app.
       path: '/', //Path for the cookie. Defaults to “/”.
       sameSite: 'strict',
-      secure: false, // Marks the cookie to be used with HTTPS only.
+      secure: true, // Marks the cookie to be used with HTTPS only.
       httpOnly: true, // Flags the cookie to be accessible only by the web server.
       maxAge: 3 * 60 * 1000, // Convenient option for setting the expiry time relative to the current time in milliseconds.
       signed: false,
@@ -23,11 +23,11 @@ export default {
     // 数据库配置
     typeorm: {
       // mysql配置
-      host: '172.16.12.168',
-      port: 32769,
-      username: 'root',
-      password: 'df123456',
-      database: 'sso',
+      host: '10.1.113.4',
+      port: 33306,
+      username: 'dfroot',
+      password: 'Q0k9Ka1858OW',
+      database: 'atest',
       synchronize: false,
       entities: ['src/modules/**/**.entity.{ts,js}'],
       autoLoadEntities: true,

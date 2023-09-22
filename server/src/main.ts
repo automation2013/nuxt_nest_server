@@ -79,7 +79,7 @@ async function bootstrap() {
       const path = config.get('swagger.path');
       console.log(
         '\x1B[35m',
-        ` ➜ Swagger: ${protocol}://${host}:${port}/${path}`,
+        ` ➜ Swagger: ${protocol}://127.0.0.1:${port}/${path}`,
         '\x1B[0m',
       );
     }
