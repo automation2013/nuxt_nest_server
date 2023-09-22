@@ -2,7 +2,7 @@ export default {
   server: {
     // 服务器配置
     httpsOpen: false, // 是否使用https协议
-    port: 3000, // 服务器端口
+    port: 8080, // 服务器端口
     host: '0.0.0.0', // 服务器监听端口
     apiPrefix: 'api', // 服务器路由前缀
   },
