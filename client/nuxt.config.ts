@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: {
     host: '0.0.0.0',
-    port: 8080,
+    port: 3000,
     https: {
       key: '../secrets/private-key.pem',
       cert: '../secrets/public-certificate.pem',
