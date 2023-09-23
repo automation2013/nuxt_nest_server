@@ -13,5 +13,8 @@
     "@nuxt/devtools": "latest",
     "cross-env": "^7.0.3",
     "nuxt": "^3.7.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }

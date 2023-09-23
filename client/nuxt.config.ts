@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: {
@@ -13,4 +14,5 @@ export default defineNuxtConfig({
     server: true,
     client: true,
   },
+  css: [path.join(__dirname, '../node_modules/normalize.css/normalize.css')],
 });
