@@ -15,6 +15,7 @@
     "nuxt": "^3.7.1"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "sass": "^1.68.0"
   }
 }
