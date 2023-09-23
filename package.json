@@ -14,7 +14,7 @@
     "server:start:dev": "npm run start:dev --workspace=app-server",
     "server:start:debug": "npm run start:debug --workspace=app-server",
     "server:build": "npm run build --workspace=app-server",
-    "server:start:prod": "NODE_ENV=production npm run start:prod --workspace=app-server",
+    "server:start:prod": "npm run start:prod --workspace=app-server",
     "start:dev": "npm-run-all --parallel server:start:dev client:start:dev",
     "build": "npm-run-all --sequential server:build client:build",
     "start:prod": "npm-run-all --parallel server:start:prod client:start:prod"

@@ -72,7 +72,7 @@ async function bootstrap() {
     const protocol = httpsOpen ? 'https' : 'http';
     console.log(
       '\x1B[32m',
-      ` ➜ Local:   ${protocol}://${host}:${port}`,
+      ` ➜ Server:   ${protocol}://${host}:${port}`,
       '\x1B[0m',
     );
     if (swaggerOpen) {
