@@ -9,16 +9,25 @@ const config = require('config');
 export function getCookieConfig(key: string): CookieOptions {
   const commonConfig: CookieOptions = config.get('cookie.common') || {};
   const specificConfig: CookieOptions = config.has(`cookie.${key}`)
-    ? config.get('cookie.common')
+    ? config.get(`cookie.${key}`)
     : {};
+  const maxAge = specificConfig.maxAge || commonConfig.maxAge;
+  const path = specificConfig.path || commonConfig.path;
+  const httpOnly = specificConfig.httpOnly || commonConfig.httpOnly;
+  const domain = specificConfig.domain || commonConfig.domain;
+  const secure = specificConfig.secure || commonConfig.secure;
+  const sameSite = specificConfig.sameSite || commonConfig.sameSite;
+  const signed = specificConfig.signed || commonConfig.signed;
+  const expires = new Date(Date.now() + maxAge);
   const cookieConfig: CookieOptions = {
-    maxAge: specificConfig.maxAge || commonConfig.maxAge,
-    path: specificConfig.path || commonConfig.path,
-    httpOnly: specificConfig.httpOnly || commonConfig.httpOnly,
-    domain: specificConfig.domain || commonConfig.domain,
-    secure: specificConfig.secure || commonConfig.secure,
-    sameSite: specificConfig.sameSite || commonConfig.sameSite,
-    signed: specificConfig.signed || commonConfig.signed,
+    maxAge,
+    path,
+    httpOnly,
+    domain,
+    secure,
+    sameSite,
+    signed,
+    expires,
   };
   return cookieConfig;
 }
