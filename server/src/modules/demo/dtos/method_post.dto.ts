@@ -6,5 +6,5 @@ export class MethodPostDto {
     description: '字段描述',
   })
   @IsString()
-  namePost: string;
+  readonly namePost: string;
 }
