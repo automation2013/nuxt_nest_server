@@ -11,7 +11,7 @@ export default {
     common: {
       // cookie 公共配置
       domain: '', // Domain name for the cookie. Defaults to the domain name of the app.
-      path: '/', //Path for the cookie. Defaults to “/”.
+      path: '/', // Path for the cookie. Defaults to “/”.
       sameSite: 'strict',
       secure: true, // Marks the cookie to be used with HTTPS only.
       httpOnly: true, // Flags the cookie to be accessible only by the web server.
