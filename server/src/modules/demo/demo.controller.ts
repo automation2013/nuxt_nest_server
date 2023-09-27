@@ -9,13 +9,13 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { DemoService } from './demo.service';
-import { MethodGetDto } from './dtos/method_get.dto';
-import { MethodPostDto } from './dtos/method_post.dto';
 import { Request, Response } from 'express';
 import { getCookieConfig } from '../../common/utils/cookie';
 import { IResponse } from '../../common/interfaces/respons.interface';
 import { ERRROR } from '../../common/http/error';
+import { DemoService } from './demo.service';
+import { MethodGetDto } from './dtos/method_get.dto';
+import { MethodPostDto } from './dtos/method_post.dto';
 
 @ApiTags('demo示例接口')
 @Controller('demo')
