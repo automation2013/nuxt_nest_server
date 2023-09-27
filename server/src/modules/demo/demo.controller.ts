@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Query, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Query,
+  Req,
+  Res,
+  HttpStatus,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
@@ -32,10 +41,10 @@ export class DemoController {
     description: '接口功能详情',
   })
   @ApiResponse({
-    status: 201,
+    status: HttpStatus.CREATED,
     description: 'The record has been successfully created.',
   })
-  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden.' })
   @Post('test/post')
   methodPost(@Body() methodPostDto: MethodPostDto): IResponse {
     console.log(methodPostDto);
