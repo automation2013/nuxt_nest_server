@@ -1,3 +1,2 @@
-import { HttpError } from './http_error';
-
-export { HttpError };
+export * from './consts/http_error';
+export * from './interfaces/http_respons';

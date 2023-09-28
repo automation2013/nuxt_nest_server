@@ -10,9 +10,8 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
-import { HttpError } from 'common-content';
+import { HttpError, IHttpResponse } from 'common-content';
 import { getCookieConfig } from '../../common/utils/cookie';
-import { IResponse } from '../../common/interfaces/respons.interface';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
 import { MethodPostDto } from './dtos/method_post.dto';
@@ -27,7 +26,7 @@ export class DemoController {
     description: '接口功能详情',
   })
   @Get('test/get')
-  async methodGet(@Query() methodGetDto: MethodGetDto): Promise<IResponse> {
+  async methodGet(@Query() methodGetDto: MethodGetDto): Promise<IHttpResponse> {
     console.log(methodGetDto);
     const res = await this.demoService.methodGet();
     return {
@@ -46,7 +45,7 @@ export class DemoController {
   })
   @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden.' })
   @Post('test/post')
-  methodPost(@Body() methodPostDto: MethodPostDto): IResponse {
+  methodPost(@Body() methodPostDto: MethodPostDto): IHttpResponse {
     console.log(methodPostDto);
     return {
       status: -1,
