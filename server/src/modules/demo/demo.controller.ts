@@ -10,9 +10,9 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
+import { HttpError } from 'common-content';
 import { getCookieConfig } from '../../common/utils/cookie';
 import { IResponse } from '../../common/interfaces/respons.interface';
-import { HttpError } from '../../common/http/error';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
 import { MethodPostDto } from './dtos/method_post.dto';

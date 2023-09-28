@@ -22,7 +22,8 @@
   },
   "workspaces": [
     "client",
-    "server"
+    "server",
+    "common-content"
   ],
   "author": "",
   "license": "MIT",
