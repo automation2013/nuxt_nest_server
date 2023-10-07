@@ -12,3 +12,12 @@ interface IHttpResponseError {
 }
 
 export type IHttpResponse = IHttpHtResponseOk | IHttpResponseError;
+
+export interface IHttpResponseClient {
+  status: 0 | -1;
+  data: {
+    [key: string]: unknown;
+  };
+  errcode: string;
+  errmsg: string;
+}
