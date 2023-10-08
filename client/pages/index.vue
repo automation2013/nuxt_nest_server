@@ -8,4 +8,4 @@ definePageMeta({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss"></style>

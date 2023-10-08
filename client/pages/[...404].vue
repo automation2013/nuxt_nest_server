@@ -6,4 +6,4 @@ definePageMeta({
   layout: 'default',
 });
 </script>
-<style scoped></style>
+<style lang="scss"></style>
