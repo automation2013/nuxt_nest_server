@@ -11,13 +11,28 @@ export function getCookieConfig(key: string): CookieOptions {
   const specificConfig: CookieOptions = config.has(`cookie.${key}`)
     ? config.get(`cookie.${key}`)
     : {};
-  const maxAge = specificConfig.maxAge || commonConfig.maxAge;
-  const path = specificConfig.path || commonConfig.path;
-  const httpOnly = specificConfig.httpOnly || commonConfig.httpOnly;
-  const domain = specificConfig.domain || commonConfig.domain;
-  const secure = specificConfig.secure || commonConfig.secure;
-  const sameSite = specificConfig.sameSite || commonConfig.sameSite;
-  const signed = specificConfig.signed || commonConfig.signed;
+  const specificKeys = Object.keys(specificConfig);
+  const maxAge = specificKeys.includes('maxAge')
+    ? specificConfig.maxAge
+    : commonConfig.maxAge;
+  const path = specificKeys.includes('path')
+    ? specificConfig.path
+    : commonConfig.path;
+  const httpOnly = specificKeys.includes('httpOnly')
+    ? specificConfig.httpOnly
+    : commonConfig.httpOnly;
+  const domain = specificKeys.includes('domain')
+    ? specificConfig.domain
+    : commonConfig.domain;
+  const secure = specificKeys.includes('secure')
+    ? specificConfig.secure
+    : commonConfig.secure;
+  const sameSite = specificKeys.includes('sameSite')
+    ? specificConfig.sameSite
+    : commonConfig.sameSite;
+  const signed = specificKeys.includes('signed')
+    ? specificConfig.signed
+    : commonConfig.signed;
   const expires = new Date(Date.now() + maxAge);
   const cookieConfig: CookieOptions = {
     maxAge,
