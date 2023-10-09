@@ -29,5 +29,13 @@ export function getCookieConfig(key: string): CookieOptions {
     signed,
     expires,
   };
+  specificConfig.maxAge === null && delete cookieConfig.maxAge;
+  specificConfig.path === null && delete cookieConfig.path;
+  specificConfig.httpOnly === null && delete cookieConfig.httpOnly;
+  specificConfig.domain === null && delete cookieConfig.domain;
+  specificConfig.secure === null && delete cookieConfig.secure;
+  specificConfig.sameSite === null && delete cookieConfig.sameSite;
+  specificConfig.signed === null && delete cookieConfig.signed;
+  specificConfig.maxAge === null && delete cookieConfig.expires;
   return cookieConfig;
 }
