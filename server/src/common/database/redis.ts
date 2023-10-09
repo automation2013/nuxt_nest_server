@@ -2,13 +2,12 @@ import { Redis } from 'ioredis';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('config');
 
-const prefix = config.get('database.redis.prefix');
-
 const redis = new Redis({
   host: config.get('database.redis.host'),
   port: config.get('database.redis.port'),
   password: config.get('database.redis.password'),
   db: config.get('database.redis.dbNumber'),
+  keyPrefix: config.get('database.redis.prefix'),
 });
 
 redis.on('error', (err) => {
@@ -25,8 +24,7 @@ export async function redisSetEx(option: {
   value: string;
   seconds: number;
 }): Promise<'OK'> {
-  const key = `${prefix}:${option.key}`;
-  return await redis.setex(key, option.seconds, option.value);
+  return await redis.setex(option.key, option.seconds, option.value);
 }
 
 /**
@@ -34,8 +32,7 @@ export async function redisSetEx(option: {
  * @param key redis的key
  */
 export async function redisGet(key: string): Promise<string | null> {
-  const redisKey = `${prefix}:${key}`;
-  return await redis.get(redisKey);
+  return await redis.get(key);
 }
 
 /**
@@ -43,6 +40,5 @@ export async function redisGet(key: string): Promise<string | null> {
  * @param key redis的key
  */
 export async function redisDel(key: string): Promise<number> {
-  const redisKey = `${prefix}:${key}`;
-  return await redis.del(redisKey);
+  return await redis.del(key);
 }

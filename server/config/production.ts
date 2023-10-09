@@ -1,7 +1,7 @@
 export default {
   database: {
     redis: {
-      prefix: 'prod-sso',
+      prefix: 'prod-nuxt-nest:',
     },
   },
 };

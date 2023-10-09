@@ -37,7 +37,7 @@ export default {
       host: '10.1.113.4',
       port: 46379,
       password: 'o0OE%3wGAFSR',
-      prefix: 'dev-sso',
+      prefix: 'dev-nuxt-nest:',
       dbNumber: 0,
     },
   },
