@@ -1,17 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import * as fs from 'node:fs';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-const compression = require('compression');
 import helmet from 'helmet';
-const config = require('config');
-const bodyParser = require('body-parser');
 import * as cookieParser from 'cookie-parser';
-import * as fs from 'node:fs';
-const path = require('node:path');
 
 import { AppModule } from './app.module';
-import { createRedisClient } from './common/database/redis';
+const path = require('node:path');
+const compression = require('compression');
+const config = require('config');
+const bodyParser = require('body-parser');
 const host = config.get('server.host');
 const port = config.get('server.port');
 const httpsOpen = config.get('server.httpsOpen');
@@ -60,8 +59,6 @@ function addSwagger(app: NestExpressApplication) {
 }
 
 async function bootstrap() {
-  // 创建redis实例
-  await createRedisClient();
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     httpsOptions,
   });

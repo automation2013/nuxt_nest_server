@@ -27,7 +27,7 @@ export default {
       port: 33306,
       username: 'dfroot',
       password: 'Q0k9Ka1858OW',
-      database: 'atest',
+      database: 'demo',
       synchronize: false,
       entities: ['src/modules/**/**.entity.{ts,js}'],
       autoLoadEntities: true,
