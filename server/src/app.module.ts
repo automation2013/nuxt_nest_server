@@ -11,7 +11,7 @@ import { DemoModule } from './modules/demo/demo.module';
   imports: [
     // 公共模块
     TypeormModule,
-    //业务模块
+    // 业务模块
     DemoModule,
   ],
   controllers: [],
