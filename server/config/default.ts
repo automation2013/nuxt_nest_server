@@ -18,6 +18,16 @@ export default {
       maxAge: 3 * 60 * 1000, // Convenient option for setting the expiry time relative to the current time in milliseconds.
       signed: false,
     },
+    'session-cookie': {
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7day
+      secure: 'auto',
+    },
+  },
+  session: {
+    sessionName: 'connect.sid',
+    sessionSecret: 'TMq2FBABaj',
+    storePrefix: 'session-user:',
+    sessionCookie: 'session-cookie', // session使用的cookie的名字
   },
   database: {
     // 数据库配置

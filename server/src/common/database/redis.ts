@@ -2,7 +2,7 @@ import { Redis } from 'ioredis';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('config');
 
-const redis = new Redis({
+export const redis = new Redis({
   host: config.get('database.redis.host'),
   port: config.get('database.redis.port'),
   password: config.get('database.redis.password'),

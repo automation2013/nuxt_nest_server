@@ -7,6 +7,7 @@ import {
   Req,
   Res,
   HttpStatus,
+  Session,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
@@ -70,6 +71,22 @@ export class DemoController {
     return {
       cookies,
       signedCookies,
+    };
+  }
+
+  @ApiOperation({
+    summary: '测试session',
+    description: '接口功能详情',
+  })
+  @Get('test/session')
+  methodSession(@Session() session: Record<string, any>) {
+    const lastSession = JSON.stringify(session.testSession || null);
+    session.testSession = { test: 'test-session' };
+    return {
+      status: 0,
+      data: {
+        oldSession: JSON.parse(lastSession),
+      },
     };
   }
 }
