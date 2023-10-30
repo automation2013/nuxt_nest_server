@@ -16,10 +16,13 @@ import { getCookieConfig } from '../../common/utils/cookie';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
 import { MethodPostDto } from './dtos/method_post.dto';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const config = require('config');
 
 @ApiTags('demo示例接口')
 @Controller('demo')
 export class DemoController {
+  // eslint-disable-next-line no-useless-constructor
   constructor(private readonly demoService: DemoService) {}
 
   @ApiOperation({
@@ -80,6 +83,14 @@ export class DemoController {
   })
   @Get('test/session')
   methodSession(@Session() session: Record<string, any>) {
+    if (!config.get('session.isOpen')) {
+      return {
+        status: 0,
+        data: {
+          warning: 'session未打开，请在配置文件中配置 “session.isOpen” 字段',
+        },
+      };
+    }
     const lastSession = JSON.stringify(session.testSession || null);
     session.testSession = { test: 'test-session' };
     return {

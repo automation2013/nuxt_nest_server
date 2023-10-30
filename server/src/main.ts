@@ -40,19 +40,21 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
   app.use(bodyParser.json({ extended: true, limit: '20mb' }));
   app.use(compression());
   app.use(cookieParser());
-  app.use(
-    session({
-      name: config.get('session.sessionName'),
-      secret: config.get('session.sessionSecret'),
-      resave: true,
-      saveUninitialized: false,
-      store: new RedisStore({
-        client: redisInstance,
-        prefix: config.get('session.storePrefix'),
+  if (config.get('session.isOpen')) {
+    app.use(
+      session({
+        name: config.get('session.sessionName'),
+        secret: config.get('session.sessionSecret'),
+        resave: true,
+        saveUninitialized: false,
+        store: new RedisStore({
+          client: redisInstance,
+          prefix: config.get('session.storePrefix'),
+        }),
+        cookie: getCookieConfig(config.get('session.sessionCookie')),
       }),
-      cookie: getCookieConfig(config.get('session.sessionCookie')),
-    }),
-  );
+    );
+  }
 }
 
 /**

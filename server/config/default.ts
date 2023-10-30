@@ -24,6 +24,7 @@ export default {
     },
   },
   session: {
+    isOpen: false, // 是否启用session
     sessionName: 'connect.sid',
     sessionSecret: 'TMq2FBABaj',
     storePrefix: 'session-user:',
