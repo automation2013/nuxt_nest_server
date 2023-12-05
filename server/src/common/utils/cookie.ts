@@ -33,7 +33,6 @@ export function getCookieConfig(key: string): CookieOptions {
   const signed = specificKeys.includes('signed')
     ? specificConfig.signed
     : commonConfig.signed;
-  const expires = maxAge ? new Date(Date.now() + maxAge) : undefined;
   const cookieConfig: CookieOptions = {
     maxAge,
     path,
@@ -42,7 +41,6 @@ export function getCookieConfig(key: string): CookieOptions {
     secure,
     sameSite,
     signed,
-    expires,
   };
   specificConfig.maxAge === null && delete cookieConfig.maxAge;
   specificConfig.path === null && delete cookieConfig.path;
@@ -51,6 +49,5 @@ export function getCookieConfig(key: string): CookieOptions {
   specificConfig.secure === null && delete cookieConfig.secure;
   specificConfig.sameSite === null && delete cookieConfig.sameSite;
   specificConfig.signed === null && delete cookieConfig.signed;
-  specificConfig.maxAge === null && delete cookieConfig.expires;
   return cookieConfig;
 }
