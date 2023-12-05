@@ -46,6 +46,7 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
         name: config.get('session.sessionName'),
         secret: config.get('session.sessionSecret'),
         resave: true,
+        rolling: true,
         saveUninitialized: false,
         store: new RedisStore({
           client: redisInstance,
