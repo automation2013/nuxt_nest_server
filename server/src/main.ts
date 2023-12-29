@@ -82,7 +82,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     httpsOptions,
   });
-  app.set('trust proxy', 1);
+  app.set('trust proxy', true);
   app.setGlobalPrefix(apiPrefix); // 设置服务器路由前缀(https://docs.nestjs.com/faq/global-prefix)
   addAppGlobalMiddleaware(app);
   swaggerOpen && addSwagger(app);
