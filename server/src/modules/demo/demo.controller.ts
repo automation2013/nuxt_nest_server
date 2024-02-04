@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
-import { HttpError, IHttpResponse } from 'common-content';
+import { HttpError, IHttpResponse } from 'common_content';
 import { getCookieConfig } from '../../common/utils/cookie';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
