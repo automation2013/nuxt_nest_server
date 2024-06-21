@@ -10,6 +10,10 @@ export const redis = new Redis({
   keyPrefix: config.get('database.redis.prefix'),
 });
 
+redis.on('ready', () => {
+  console.log('\x1B[36m', `➜ redis 建立连接成功`, '\x1B[0m');
+});
+
 redis.on('error', (err) => {
   console.log('\x1B[31m', `➜ redis 配置错误，错误信息如下`, '\x1B[0m');
   console.error(err);
