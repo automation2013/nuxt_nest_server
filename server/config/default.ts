@@ -34,10 +34,10 @@ export default {
     // 数据库配置
     typeorm: {
       // mysql配置
-      host: '10.1.113.4',
-      port: 33306,
+      host: '192.168.10.2',
+      port: 33308,
       username: 'dfroot',
-      password: 'Q0k9Ka1858OW',
+      password: 'Q0k9Ka1859dataW',
       database: 'demo',
       synchronize: false,
       entities: ['src/modules/**/**.entity.{ts,js}'],
@@ -45,9 +45,9 @@ export default {
     },
     redis: {
       // redis配置
-      host: '10.1.113.4',
-      port: 46379,
-      password: 'o0OE%3wGAFSR',
+      host: '192.168.10.2',
+      port: 40381,
+      password: 'k4RaskfM4',
       prefix: 'dev-nuxt-nest:',
       dbNumber: 0,
     },
