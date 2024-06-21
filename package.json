@@ -18,7 +18,7 @@
     "start:prod": "npm-run-all --parallel server:start:prod client:start:prod"
   },
   "engines": {
-    "node": ">=18.17.1 <19"
+    "node": ">=20.15.0 <21"
   },
   "workspaces": [
     "client",
