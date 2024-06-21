@@ -8,6 +8,7 @@ import {
   Res,
   HttpStatus,
   Session,
+  HttpException,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Request, Response } from 'express';
@@ -75,6 +76,21 @@ export class DemoController {
       cookies,
       signedCookies,
     };
+  }
+
+  @ApiOperation({
+    summary: '测试HttpException异常',
+    description: '接口功能详情',
+  })
+  @Get('test/HttpException')
+  methodHttpException() {
+    // 参考文档：https://docs.nestjs.com/exception-filters
+    throw new HttpException(
+      {
+        error: '这是一个业务拦截',
+      },
+      HttpStatus.FORBIDDEN,
+    );
   }
 
   @ApiOperation({

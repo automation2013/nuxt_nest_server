@@ -28,3 +28,33 @@ export function demoPostTest(data: IDemoPostTest) {
     data,
   });
 }
+
+/**
+ * 测试cookie
+ */
+export function demoCookieTest() {
+  return request({
+    path: '/api/demo/test/cookie',
+    method: 'GET',
+  });
+}
+
+/**
+ * 测试session
+ */
+export function demoCookieSession() {
+  return request({
+    path: '/api/demo/test/session',
+    method: 'GET',
+  });
+}
+
+/**
+ * 测试HttpException
+ */
+export function demoHttpException() {
+  return request({
+    path: '/api/demo/test/HttpException',
+    method: 'GET',
+  });
+}
