@@ -17,8 +17,8 @@ import { getCookieConfig } from '../../common/utils/cookie';
 import { DemoService } from './demo.service';
 import { MethodGetDto } from './dtos/method_get.dto';
 import { MethodPostDto } from './dtos/method_post.dto';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('config');
+/* eslint import/namespace: "off" */
+import * as config from 'config';
 
 @ApiTags('demo示例接口')
 @Controller('demo')

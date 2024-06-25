@@ -1,6 +1,6 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('config');
+/* eslint import/namespace: "off" */
+import * as config from 'config';
 const TypeormModule = TypeOrmModule.forRoot({
   type: 'mysql',
   host: config.get('database.typeorm.host'),
@@ -13,3 +13,5 @@ const TypeormModule = TypeOrmModule.forRoot({
   autoLoadEntities: config.get('database.typeorm.autoLoadEntities'),
 });
 export { TypeormModule };
+
+console.log('\x1B[36m', `➜ mysql 建立连接成功`, '\x1B[0m');

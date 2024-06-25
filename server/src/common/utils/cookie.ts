@@ -1,6 +1,6 @@
 import { CookieOptions } from 'express';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require('config');
+/* eslint import/namespace: "off" */
+import * as config from 'config';
 
 /**
  * 查询cookie配置
