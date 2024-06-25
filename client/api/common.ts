@@ -1,4 +1,4 @@
-import { IHttpResponseClient } from 'common_content';
+import type { IHttpResponseClient } from 'common_content';
 interface IRequest {
   readonly method: 'GET' | 'POST' | 'PUT' | 'DELETE';
   readonly path: string;
