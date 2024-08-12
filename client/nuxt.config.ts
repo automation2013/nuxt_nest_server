@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     client: true,
   },
   css: [
-    path.join(__dirname, '../node_modules/normalize.css/normalize.css'),
     '@/assets/styles/index.scss',
   ],
 });
