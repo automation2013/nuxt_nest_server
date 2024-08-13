@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import path from 'path';
 export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: {
@@ -17,4 +16,29 @@ export default defineNuxtConfig({
   css: [
     '@/assets/styles/index.scss',
   ],
+  postcss: {
+    plugins: {
+      // 测试autoprefixer是否生效的方法(https://github.com/postcss/autoprefixer?tab=readme-ov-file)搜索“interactive demo”
+      // 点击超链接进入 https://autoprefixer.github.io/ 进行测试
+      autoprefixer: {}, //
+      'postcss-px-to-viewport': {
+        unitToConvert: 'px',
+        viewportWidth: 375,
+        unitPrecision: 5,
+        propList: ['*'],
+        viewportUnit: 'vw',
+        fontViewportUnit: 'vw',
+        selectorBlackList: [],
+        minPixelValue: 1,
+        mediaQuery: false,
+        replace: true,
+        exclude: undefined,
+        include: undefined,
+        landscape: false,
+        landscapeUnit: 'vw',
+        landscapeWidth: 375,
+      },
+    },
+  },
+
 });
