@@ -23,7 +23,7 @@ export default defineNuxtConfig({
       autoprefixer: {}, //
       'postcss-px-to-viewport': {
         unitToConvert: 'px',
-        viewportWidth: 375,
+        viewportWidth: 375,// postcss-px-to-viewport-8-plugin 库的 viewportWidth 属性可以配函数，动态支持转pc和H5
         unitPrecision: 5,
         propList: ['*'],
         viewportUnit: 'vw',
