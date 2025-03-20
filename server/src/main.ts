@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
-import RedisStore from 'connect-redis';
+import { RedisStore } from 'connect-redis';
 import * as session from 'express-session';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
@@ -49,10 +49,10 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
         resave: true,
         rolling: true,
         saveUninitialized: false,
-        // store: new RedisStore({
-        //   client: redisInstance,
-        //   prefix: config.get('session.storePrefix'),
-        // }),
+        store: new RedisStore({
+          client: redisInstance,
+          prefix: config.get('session.storePrefix'),
+        }),
         cookie: getCookieConfig(config.get('session.sessionCookie')),
       }),
     );
