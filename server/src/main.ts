@@ -7,14 +7,14 @@ import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
 import RedisStore from 'connect-redis';
 import * as session from 'express-session';
+import * as bodyParser from 'body-parser';
+import * as compression from 'compression';
 import { redis as redisInstance } from './common/database/redis';
 import { getCookieConfig } from './common/utils/cookie';
 
 import { AppModule } from './app.module';
 const path = require('node:path');
-import * as compression from 'compression';
 const config = require('config');
-const bodyParser = require('body-parser');
 const host = config.get('server.host');
 const port = config.get('server.port');
 const httpsOpen = config.get('server.httpsOpen');
@@ -37,7 +37,8 @@ const httpsOptions = httpsOpen
  */
 function addAppGlobalMiddleaware(app: NestExpressApplication) {
   app.use(helmet());
-  app.use(bodyParser.json({ extended: true, limit: '20mb' }));
+  // eslint-disable-next-line import/namespace
+  app.use(bodyParser.json({ limit: '20mb' }));
   app.use(compression());
   app.use(cookieParser());
   if (config.get('session.isOpen')) {
