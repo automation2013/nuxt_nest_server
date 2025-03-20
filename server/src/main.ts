@@ -12,7 +12,7 @@ import { getCookieConfig } from './common/utils/cookie';
 
 import { AppModule } from './app.module';
 const path = require('node:path');
-const compression = require('compression');
+import * as compression from 'compression';
 const config = require('config');
 const bodyParser = require('body-parser');
 const host = config.get('server.host');
@@ -48,10 +48,10 @@ function addAppGlobalMiddleaware(app: NestExpressApplication) {
         resave: true,
         rolling: true,
         saveUninitialized: false,
-        store: new RedisStore({
-          client: redisInstance,
-          prefix: config.get('session.storePrefix'),
-        }),
+        // store: new RedisStore({
+        //   client: redisInstance,
+        //   prefix: config.get('session.storePrefix'),
+        // }),
         cookie: getCookieConfig(config.get('session.sessionCookie')),
       }),
     );
