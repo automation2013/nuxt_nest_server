@@ -39,9 +39,11 @@ export default {
       username: 'dfroot',
       password: 'Q0k9Ka1859dataW',
       database: 'demo',
-      synchronize: false,
       entities: ['src/modules/**/**.entity.{ts,js}'],
       autoLoadEntities: true,
+      supportBigNumbers: true,
+      bigNumberStrings: true,
+      synchronize: false,
     },
     redis: {
       // redis配置

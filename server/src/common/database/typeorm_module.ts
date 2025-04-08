@@ -11,6 +11,8 @@ const TypeormModule = TypeOrmModule.forRoot({
   entities: config.get('database.typeorm.entities'),
   synchronize: config.get('database.typeorm.synchronize'),
   autoLoadEntities: config.get('database.typeorm.autoLoadEntities'),
+  supportBigNumbers: config.get('database.typeorm.supportBigNumbers'),
+  bigNumberStrings: config.get('database.typeorm.bigNumberStrings'),
 });
 export { TypeormModule };
 
