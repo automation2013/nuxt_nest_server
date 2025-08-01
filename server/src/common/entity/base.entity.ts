@@ -15,7 +15,7 @@ export abstract class BaseEntity {
 
   @CreateDateColumn({
     name: 'created_at',
-    type: 'datetime',
+    type: 'timestamp',
     nullable: false,
     comment: '创建时间',
   })
@@ -23,17 +23,17 @@ export abstract class BaseEntity {
 
   @UpdateDateColumn({
     name: 'updated_at',
-    type: 'datetime',
+    type: 'timestamp',
     nullable: false,
     comment: '编辑时间',
   })
   updatedAt: Date;
 
   @Column({
-    name: 'deleleted_at',
-    type: 'datetime',
+    name: 'deleted_at',
+    type: 'timestamp',
     nullable: true,
     comment: '软删除时间',
   })
-  deleletedAt: Date;
+  deletedAt: Date;
 }
